@@ -1,0 +1,8 @@
+int main()
+{
+	START_VAR
+		list of float d;
+		float a;	
+	END_VAR
+	a = 4*d;
+}
