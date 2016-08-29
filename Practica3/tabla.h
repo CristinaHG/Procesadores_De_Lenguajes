@@ -1,0 +1,55 @@
+	#define IF	256
+	#define	ELSE	257
+	#define	SWITCH	258
+	#define	CASE	259
+	#define	OP_BIN	260
+	#define	OP_UNIT	263
+	#define	OP_PM	289
+	#define	TYPE	264
+	#define	BEGIN_LIST	265
+	#define	END_LIST	266
+	#define	ASSIGN	267
+	#define	PL	268
+	#define PR	269
+	#define	BEGIN_P	270
+	#define	END_P	271
+	#define	COMMA	272
+	#define	SEMICOLON	273
+	#define	INPUT	274
+	#define	OUTPUT	275
+	#define	MAIN	276
+	#define	START_VAR_DEC	277
+	#define	END_VAR_DEC	278
+	#define	LIST	279
+	#define	ID	280
+	#define BOOL 281
+    #define RETURN 282
+    #define LIMIT_CHAR 283
+    #define DIGIT 284
+    #define LETTER 285
+    #define SYMBOL 286
+    #define MINUS 287
+    #define POINT 288
+	#define WHILE 289
+#define INT 290
+#define FLOAT 291
+#define CHAR 292
+#define CAD 293
+#define TWOPOINTS 294
+#define BREAK 295
+#define OP_OR 296
+#define OP_OR_BITS 297
+#define OP_XOR 298
+#define OP_AND_BITS 299
+#define OP_EQ 300
+#define OP_REL 301
+#define OP_ADD 302
+#define OP_MUL 303
+#define OP_UNARY 304
+#define OP_DEC_PRE 305
+#define OP_INC_PRE 306
+#define OP_DEC_POST 307
+#define OP_INC_POST 308
+#define OP_INDEX 309
+
+#define MAIN 256
