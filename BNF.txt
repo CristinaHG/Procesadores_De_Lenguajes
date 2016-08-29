@@ -1,0 +1,143 @@
+<Programa>                          ::= <Cabecera_programa> <bloque> | 
+
+<bloque>                            ::= <Inicio_de_bloque>
+                                        <Declar_de_variables_locales>
+                                        <Declar_de_subprogs>
+                                        <Sentencias>
+                                        <Fin_de_bloque>
+
+<Declar_de_subprogs>                ::= <Declar_de_subprogs> <Declar_subprog>
+
+<Declar_subprog>                    ::= <Cabecera_subprograma> <bloque>
+
+<Declar_de_variables_locales>       ::= <Marca_ini_declar_variables>
+                                        <Variables_locales>
+                                        <Marca_fin_declar_variables> |
+
+<Marca_ini_declar_variables>        ::= varini
+
+<Marca_fin_declar_variables>        ::= varfin
+
+<Cabecera_programa>                 ::= INICIO_PROGRAMA
+
+<Inicio_de_bloque>                  ::= {
+
+<Fin_de_bloque>                     ::= }
+
+<Variables_locales>                 ::= <Variables_locales> <Cuerpo_declar_variables>
+                                        | <Cuerpo_declar_variables>
+
+<Cuerpo_declar_variables>           ::= <tipo> <lista_variables> ';'
+
+<lista_variables>                   ::= <lista_variables> ',' <variable> | <variable>
+
+<variable>                          ::= <id> | <id> '[' <numero> ']' | <id> '[' <numero> ',' <numero> ']'
+
+<Cabecera_subprograma>              ::= <tipo> <id> (<argumentos>)
+
+<Sentencias>                        ::= <Sentencias> <Sentencia> | <Sentencia>
+
+<Sentencia>                         ::= <bloque>
+                                        | <sentencia_asignacion>
+                                        | <sentencia_if>
+                                        | <sentencia_while>
+                                        | <sentencia_entrada>
+                                        | <sentencia_salida>
+                                        | <sentencia_return>
+                                        | <sentencia_case>
+
+<sentencia_asignacion>              ::= <id> <asignacion> <expresion>; |
+                                        <array> <asignacion> <expresion> ';'
+<sentencia_if>                      ::= si '(' <expresion> ')' <sentencia>
+                                        | si '(' <expresion> ')' <sentencia> sino <sentencia>
+
+<sentencia_while>                   ::= mientras '(' <expresion> ')' <sentencia>
+
+<sentencia_entrada>                 ::= <nomb_entrada> <lista_variables>
+
+<nomb_entrada>                      ::= entrada
+
+<sentencia_salida>                  ::= <nomb_salida> <lista_expresiones_o_cadena> ';'
+
+<nomb_salida>                       ::= salida
+
+<lista_expresiones_o_cadena>        ::= <lista_expresiones_o_cadena> ',' <expresion_cadena>
+                                        | <expresion_cadena>
+
+<expresion_cadena>                  ::= <expresion> | <cadena>
+
+<cadena>                            ::= (\"[^\"]*\")
+
+<sentencia_return>                  ::= devuelve <expresion> ';'
+
+<sentencia_seleccion>               ::= selecciona '(' <expresion> ')' <sentencia_case>
+                                        | <sentencia_seleccion>
+
+<sentencia_case>                    ::= caso <expresion> ':' <sentencia>
+
+<expresion>                         ::= '(' <expresion> ')'
+                                        | <op_unario> <expresion>
+                                        | <expresion> <op_binario> <expresion>
+                                        | <id>
+                                        | <array>
+                                        | <constante>
+                                        | <funcion>
+
+<op_unario>                         ::= '++' | '--' | '!' | '+' | '-'
+
+<op_binario>                        ::= '+' | '-' | '*' | '/' | '<' | '<=' | '>' | '>=' | '==' | '!=' | '%'
+
+<funcion>                           ::= <id> '(' <lista_exp> ')' | <id> '( )'
+
+<lista_exp>                         ::= <lista_exp> ',' <expresion> | <expresion>
+
+<letra>                             ::= [a-zA-Z]
+
+<digito>                            ::= [0-9]
+
+<id>                                ::= <letra>(<letra>|<digito>)*
+
+<numero>                            ::= <digito>+
+
+<constante>                         ::= <c_entero> | <c_real> | <c_booleano> | <c_caracter> | <c_array> | <lista_constantes>
+
+<c_entero>                          ::= <numero>
+
+<c_real>                            ::= <numero> '.' <numero>
+
+<c_booleano>                        ::= verdadero | falso
+
+<c_caracter>                        ::= ''' <letra> '''
+
+<c_array>                           ::= '{' <lista_c_entero> '}' | '{' <lista_c_entero> ';' <lista_columna_entero> '}'
+                                        | '{' <lista_c_real> '}' | '{' <lista_c_real> ';' <lista_columna_real> '}'
+                                        | '{' <lista_c_booleano> '}' | '{' <lista_c_booleano> ';' <lista_columna_booleano> '}'
+                                        | '{' <lista_c_caracter> '}' | '{' <lista_c_caracter> ';' <lista_columna_caracter> '}'
+
+<tipo>                              ::=  caracter | entero | booleano | real |
+
+<argumentos>                        ::= <argumentos> ',' <tipo> <variable> | <tipo> <variable>
+
+<asignacion>                        ::= '='
+
+<array>                             ::= <id> '[' <expresion> ',' <expresion> ']' | <id> '[' <expresion> ']'
+
+<lista_constantes>                  ::= <lista_columna_entero> | <lista_columna_real> | <lista_columna_booleano> | <lista_columna_caracter> | <lista_c_entero> | <lista_c_real> | <lista_c_booleano> | <lista_c_caracter> | <lista_c_array>
+
+<lista_columna_entero>              ::= <lista_columna_entero> ';' <lista_c_entero> | <lista_c_entero>
+
+<lista_columna_real>                ::= <lista_columna_real> ';' <lista_c_real> | <lista_c_real>
+
+<lista_columna_booleano>            ::= <lista_columna_booleano> ';' <lista_c_booleano> | <lista_c_booleano>
+
+<lista_columna_caracter>            ::= <lista_columna_caracter> ';' <lista_c_caracter> | <lista_c_caracter>
+
+<lista_c_entero>                    ::= <lista_c_entero> ',' <c_entero> | <c_entero>
+
+<lista_c_real>                      ::= <lista_c_real> ',' <c_real> | <c_real>
+
+<lista_c_booleano>                  ::= <lista_c_booleano> ',' <c_booleano> | <c_booleano>
+
+<lista_c_caracter>                  ::= <lista_c_caracter> ',' <c_caracter> | <c_caracter>
+
+<lista_c_array>                     ::= <lista_c_array> ',' <c_array> | <c_array>
